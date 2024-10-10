@@ -31,4 +31,11 @@ describe("StringCalculator Add Function", () => {
   test("returns the sum when using a custom delimiter specified in the input", () => {
     expect(add("//;\n1;2")).toBe(3);
   });
+
+  // Test to check if the add function throws an exception for negative numbers
+  test("throws an exception for negative numbers", () => {
+    expect(() => add("1,-2,3,-4")).toThrow(
+      "negative numbers not allowed: -2, -4"
+    );
+  });
 });
