@@ -1,0 +1,18 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Build directories
+build/
+
+# Coverage directory
+coverage/
+
+# Editor directories and files
+.vscode/
