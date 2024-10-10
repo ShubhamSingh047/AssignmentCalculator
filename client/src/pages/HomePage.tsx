@@ -1,38 +1,43 @@
 import React, { useState } from "react";
-import { add } from "../utils/calculationUtils";
 
 const HomePage: React.FC = () => {
-  const [input, setInput] = useState<string>("");
-  const [result, setResult] = useState<number | null>(null);
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
     try {
-      const sum = add(input);
-      setResult(sum);
-    } catch (error: any) {
-      alert(error.message);
+      // Clear previous error
+      setError(null);
+
+      // Check for negative numbers
+      const numbers = input.split(/,|\n/).map(Number);
+      const negativeNumbers = numbers.filter((num) => num < 0);
+      if (negativeNumbers.length > 0) {
+        throw new Error(
+          `negative numbers not allowed: ${negativeNumbers.join(", ")}`
+        );
+      }
+
+      // Calculate the sum
+      const sum = numbers.reduce((acc, num) => acc + num, 0);
+      setResult(`Result: ${sum}`);
+    } catch (e) {
+      setError(e.message);
     }
   };
 
   return (
-    <div className="calculator p-8 max-w-md mx-auto bg-white rounded shadow-md">
-      <h1 className="text-2xl font-bold mb-4">String Calculator</h1>
+    <div>
       <input
         type="text"
-        className="w-full p-2 border border-gray-300 rounded mb-4"
         placeholder="Enter numbers separated by commas or newlines"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button
-        onClick={handleCalculate}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        Calculate
-      </button>
-      {result !== null && (
-        <div className="mt-4 text-lg font-semibold">Result: {result}</div>
-      )}
+      <button onClick={handleCalculate}>Calculate</button>
+      {result && <div>{result}</div>}
+      {error && <div>{error}</div>}
     </div>
   );
 };
