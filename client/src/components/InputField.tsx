@@ -1,6 +1,6 @@
-const Button = () => {
+const InputField = () => {
     return <button>Click Me</button>;
   };
   
-  export default Button;
+  export default InputField;
   
