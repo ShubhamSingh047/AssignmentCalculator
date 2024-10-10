@@ -19,6 +19,14 @@ const HomePage: React.FC = () => {
       setError(""); // Clear any previous errors
       const cleanedInput = input.replace(/["]/g, ""); // Remove quotes if any
 
+      // Check for negative numbers (should come before the unsupported characters check)
+      const negativeNumbers = input.match(/-\d+/g);
+      if (negativeNumbers) {
+        throw new Error(
+          `Negative numbers are not allowed: ${negativeNumbers.join(", ")}`
+        );
+      }
+
       // Regex to check for unsupported characters
       if (/[^0-9,\n"]/g.test(input)) {
         throw new Error(
@@ -159,8 +167,12 @@ const HomePage: React.FC = () => {
         {/* Numpad Component */}
         <Numpad onClick={handleNumpadClick} onBackspace={handleBackspace} />
 
-        {/* Error Display */}
-        {error && <p className="mt-6 text-red-500 text-lg">{error}</p>}
+        {/* Error Display with data-testid */}
+        {error && (
+          <p className="mt-6 text-red-500 text-lg" data-testid="error-message">
+            {error}
+          </p>
+        )}
       </div>
     </div>
   );
