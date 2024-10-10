@@ -14,5 +14,14 @@ export const add = (numbers: string): number => {
 
   // Split by the delimiter(s) and calculate the sum
   const numArray = numbers.split(delimiter).map(Number);
+
+  // Check for negative numbers
+  const negativeNumbers = numArray.filter((num) => num < 0);
+  if (negativeNumbers.length > 0) {
+    throw new Error(
+      `negative numbers not allowed: ${negativeNumbers.join(", ")}`
+    );
+  }
+
   return numArray.reduce((acc, num) => acc + num, 0);
 };
