@@ -4,7 +4,7 @@ export const add = (numbers: string): number => {
     return 0; // Handle the empty string case
   }
 
-  // Split the input by comma and convert each part to a number, then sum
-  const numArray = numbers.split(",").map(Number);
+  // Replace new line characters with commas, then split and convert to numbers
+  const numArray = numbers.replace(/\n/g, ",").split(",").map(Number);
   return numArray.reduce((acc, num) => acc + num, 0);
 };
