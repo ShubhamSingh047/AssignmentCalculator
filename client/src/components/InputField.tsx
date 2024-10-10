@@ -1,2 +1,6 @@
-//for reolving bug in UI for time being due to TS.
-export {};
+const Button = () => {
+    return <button>Click Me</button>;
+  };
+  
+  export default Button;
+  

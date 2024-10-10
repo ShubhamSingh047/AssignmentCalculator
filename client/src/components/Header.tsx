@@ -1,2 +1,7 @@
-//for reolving bug in UI for time being due to TS.
-export {};
+import React from "react";
+
+const Header = () => {
+  return <div>Header</div>;
+};
+
+export default Header;
