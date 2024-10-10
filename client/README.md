@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a frontend-only application using React. The application is developed with a Test-Driven Development (TDD) approach, ensuring high-quality code and robust functionality.
+This project is a frontend-only application using React. The application is developed with a Test-Driven Development (TDD) approach, ensuring high-quality code and robust functionality consisting of add on functionality of dark and light mode.
 
 ## Folder Structure
 
