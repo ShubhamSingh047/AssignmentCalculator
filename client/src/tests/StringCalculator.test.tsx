@@ -1,20 +1,24 @@
-import { add } from '../utils/calculationUtils';
+import { add } from "../utils/calculationUtils";
 
 // Test suite for the add function
-describe('StringCalculator Add Function', () => {
-
+describe("StringCalculator Add Function", () => {
   // Test to check if an empty string returns 0
-  test('returns 0 for an empty string', () => {
+  test("returns 0 for an empty string", () => {
     expect(add("")).toBe(0);
   });
 
   // Test to check if a single number returns itself
-  test('returns the number itself for a single number', () => {
+  test("returns the number itself for a single number", () => {
     expect(add("1")).toBe(1);
   });
 
   // Test to check if two comma-separated numbers return their sum
-  test('returns the sum of two comma-separated numbers', () => {
+  test("returns the sum of two comma-separated numbers", () => {
     expect(add("1,5")).toBe(6);
+  });
+
+  // Test to check if multiple comma-separated numbers return their sum
+  test("returns the sum of multiple comma-separated numbers", () => {
+    expect(add("1,2,3,4")).toBe(10);
   });
 });
