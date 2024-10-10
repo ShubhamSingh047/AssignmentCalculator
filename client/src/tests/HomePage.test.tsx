@@ -6,7 +6,7 @@ describe("HomePage Component", () => {
   test("renders the input field for entering numbers", () => {
     render(<HomePage />);
     const inputElement = screen.getByPlaceholderText(
-      /Enter numbers separated by commas or newlines/i
+      /Enter numbers separated by commas, newlines, or custom delimiter/i
     );
     expect(inputElement).toBeInTheDocument();
   });
@@ -22,7 +22,7 @@ describe("HomePage Component", () => {
   test("displays the result after clicking the calculate button", () => {
     render(<HomePage />);
     const inputElement = screen.getByPlaceholderText(
-      /Enter numbers separated by commas or newlines/i
+      /Enter numbers separated by commas, newlines, or custom delimiter/i
     );
     const buttonElement = screen.getByText(/calculate/i);
 
@@ -39,7 +39,7 @@ describe("HomePage Component", () => {
   test("displays an error message for negative numbers", () => {
     render(<HomePage />);
     const inputElement = screen.getByPlaceholderText(
-      /Enter numbers separated by commas or newlines/i
+      /Enter numbers separated by commas, newlines, or custom delimiter/i
     );
     const buttonElement = screen.getByText(/calculate/i);
 
