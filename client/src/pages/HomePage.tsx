@@ -1,3 +1,4 @@
+// File: HomePage.tsx
 import React, { useState } from "react";
 
 const HomePage: React.FC = () => {
@@ -23,7 +24,9 @@ const HomePage: React.FC = () => {
       const sum = numbers.reduce((acc, num) => acc + num, 0);
       setResult(`Result: ${sum}`);
     } catch (e) {
-      setError(e.message);
+      if (e instanceof Error) {
+        setError(e.message);
+      }
     }
   };
 
